@@ -19,12 +19,12 @@ namespace WebApplication1.Models
         }
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage =("กรุณาป้อนชื่อนักเรียน"))]
         [DisplayName("ชื่อนักเรียน")]
         public string Name { get; set; }
 
         [DisplayName("คะแนนสอบ")]
-        [Range(0,100)]
+        [Range(0,100,ErrorMessage =("กรุณาป้อนคะแนนสอบตั้งแต่ 1-100"))]
         public int Score { get; set; }
     }
 }
