@@ -58,6 +58,21 @@ namespace WebApplication1.Controllers
             }
             return View(obj);
         }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Students.Find(id);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            _db.Students.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         public IActionResult Showscore(int id)
         {
             return Content($"คะแนนสอบของนักเรียน เลขที่ {id}");
